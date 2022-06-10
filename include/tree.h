@@ -10,7 +10,7 @@ class Tree {
   if (x >= newtr.size()) {
     return "";
   }
-  return newtr[i];
+  return newtr[x];
 }
   explicit Tree(std::vector<char> item) {
   root = new Node;
@@ -58,7 +58,7 @@ void change(Node* root, std::vector<char> vtr) {
     root->des[x]->item = vtr[x];
   }
   for (unsigned int x = 0; x < root->des.size(); x++) {
-    change(root->des[i], vtr);
+    change(root->des[x], vtr);
   }
 }
 };
