@@ -35,6 +35,7 @@ class Tree {
       for (auto x = vctr.begin(); x != vctr.end(); x++) {
         if (*x == root->item) {
           vctr.erase(x);
+          break;
         }
       }
     }
@@ -48,13 +49,10 @@ class Tree {
       buildTr(root->des[x], vctr);
     }
   }
-
+ 
  public:
   std::string operator[](int x) const {
-  if (x >= cell.size()) {
-    return "";
-  }
-  return cell[x];
+    return cell[x];
   }
     explicit Tree(std::vector<char> item) {
       root = new Node;
