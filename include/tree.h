@@ -1,63 +1,65 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TREE_H_
 #define INCLUDE_TREE_H_
-
-#endif  // INCLUDE_TREE_H_
 #include <vector>
 #include <string>
 
 class Tree {
- private:
-  std::vector<std::string> cell;
-  struct Node {
-    char item;
-    std::vector<Node*> des;
-  };
-  Node* root;
-  void newTr(Node* root, std::string len) {
-    if (!root->des.size()) {
-      len = len + (root->item);
-      cell.push_back(len);
-      return;
-    }
-    if (root->item != '*') {
-      len = len + (root->item);
-    }
-    for (unsigned int x = 0; x < (root->des.size()); x++) {
-      newTr(root->des[x], len);
-    }
-  }
-  void buildTr(Node* root, std::vector<char> vctr) {
-    if (!vctr.size()) {
-      return;
-    }
-    if (root->item != '*') {
-      for (auto x = vctr.begin(); x != vctr.end(); x++) {
-        if (*x == root->item) {
-          vctr.erase(x);
-          break;
-        }
-      }
-    }
-    for (int x = 0; x < vctr.size(); x++) {
-      root->des.push_back(new Node);
-    }
-    for (int x = 0; x < root->des.size(); x++) {
-      root->des[x]->item = vctr[x];
-    }
-    for (unsigned int x = 0; x < root->des.size(); x++) {
-      buildTr(root->des[x], vctr);
-    }
-  }
- 
  public:
   std::string operator[](int x) const {
-    return cell[x];
+  if (x >= newtr.size()) {
+    return "";
   }
-    explicit Tree(std::vector<char> item) {
-      root = new Node;
-      root->item = '*';
-      buildTr(root, item);
-      newTr(root);
+  return newtr[i];
+}
+  explicit Tree(std::vector<char> item) {
+  root = new Node;
+  root->item = '*';
+  change(root, item);
+  build(root);
+  }
+
+ private:
+  struct Node {
+  char item;
+  std::vector<Node*> des;
+  };
+  Node* root;
+  std::vector<std::string> newtr;
+  void build(Node* root, std::string vari) {
+    if (!root->des.size()) {
+      vari += root->item;
+      newtr.push_back(vari);
+      return;
     }
+  if (root->item != '*') {
+    vari += root->item;
+  }
+  for (int x = 0; x < root->des.size(); x++) {
+    build(root->des[x], vari);
+  }
+}
+void change(Node* root, std::vector<char> vtr) {
+  if (!vtr.size()) {
+    return;
+  }
+  if (root->item != '*') {
+  for (auto x = vtr.begin(); x != vtr.end(); x++) {
+    if (*x == root->item) {
+      vtr.erase(x);
+      break;
+    }
+  }
+  }
+  for (int x = 0; x < vtr.size(); x++) {
+    root->des.push_back(new Node);
+  }
+  for (int x = 0; x < root->des.size(); x++) {
+    root->des[x]->item = vtr[x];
+  }
+  for (unsigned int x = 0; x < root->des.size(); x++) {
+    change(root->des[i], vtr);
+  }
+}
 };
+#endif  // INCLUDE_TREE_H_
