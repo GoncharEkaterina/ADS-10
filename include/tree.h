@@ -7,20 +7,6 @@
 #include <string>
 
 class Tree {
- public:
-  std::string operator[](int x) const {
-  if (x >= cell.size()) {
-    return "";
-  }
-  return cell[x];
-  }
-    explicit Tree(std::vector<char> item) {
-      root = new Node;
-      root->item = '*';
-      buildTr(root, item);
-      newTr(root);
-    }
-
  private:
   std::vector<std::string> cell;
   struct Node {
@@ -62,4 +48,18 @@ class Tree {
       buildTr(root->des[x], vctr);
     }
   }
+
+ public:
+  std::string operator[](int x) const {
+  if (x >= cell.size()) {
+    return "";
+  }
+  return cell[x];
+  }
+    explicit Tree(std::vector<char> item) {
+      root = new Node;
+      root->item = '*';
+      buildTr(root, item);
+      newTr(root);
+    }
 };
