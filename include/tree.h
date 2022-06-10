@@ -20,7 +20,7 @@ class Tree {
       buildTr(root, item);
       newTr(root);
     }
- 
+
  private:
   std::vector<std::string> cell;
   Node* root;
