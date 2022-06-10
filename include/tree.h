@@ -26,7 +26,7 @@ class Tree {
   };
   Node* root;
   std::vector<std::string> newtr;
-  void build(Node* root, std::string vari) {
+  void build(Node* root, std::string vari = "") {
     if (!root->des.size()) {
       vari += root->item;
       newtr.push_back(vari);
