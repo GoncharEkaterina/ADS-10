@@ -31,7 +31,7 @@ class Tree {
   void newTr(Node* root, std::string len) {
     if (!root->des.size()) {
       len = len + (root->item);
-      Perm.push_back(len);
+      cell.push_back(len);
       return;
     }
     if (root->item != '*') {
