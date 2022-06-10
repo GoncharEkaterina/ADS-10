@@ -3,8 +3,8 @@
 #define INCLUDE_TREE_H_
 
 #endif  // INCLUDE_TREE_H_
-include <vector>
-include <string>
+#include <vector>
+#include <string>
 
 class Tree {
  public:
@@ -13,13 +13,14 @@ class Tree {
     return "";
   }
   return Perm[x];
- }
- explicit Tree(std::vector<char> item) {
-   root = new Node;
-   root->item = '*';
-   buildTr(root, item);
-   newTr(root);
- }  
+  }
+    explicit Tree(std::vector<char> item) {
+      root = new Node;
+      root->item = '*';
+      buildTr(root, item);
+      newTr(root);
+    }
+ 
  private:
   std::vector<std::string> cell;
   Node* root;
