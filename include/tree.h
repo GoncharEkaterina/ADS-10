@@ -9,10 +9,10 @@
 class Tree {
  public:
   std::string operator[](int x) const {
-  if (x >= Perm.size()) {
+  if (x >= cell.size()) {
     return "";
   }
-  return Perm[x];
+  return cell[x];
   }
     explicit Tree(std::vector<char> item) {
       root = new Node;
@@ -23,11 +23,11 @@ class Tree {
 
  private:
   std::vector<std::string> cell;
-  Node* root;
   struct Node {
     char item;
     std::vector<Node*> des;
   };
+  Node* root;
   void newTr(Node* root, std::string len) {
     if (!root->des.size()) {
       len = len + (root->item);
@@ -38,7 +38,7 @@ class Tree {
       len = len + (root->item);
     }
     for (unsigned int x = 0; x < (root->des.size()); x++) {
-      nerTr(root->des[x], len);
+      newTr(root->des[x], len);
     }
   }
   void buildTr(Node* root, std::vector<char> vctr) {
